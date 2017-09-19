@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<body>
+    {# 导航   #}
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="height: 75px">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Uminton 后台系统</a>
+
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+
+              <li><a href="#">{{ request.user }}</a></li>
+              <li><a href="">aaaaaa</a></li>
+              <li><a href="">bbbbbb</a></li>
+              <li><a href="">cccccc</a></li>
+              <li><a href="">dddddd</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+    {# 主体  #}
+    <div class="container-fluid" style="margin-top: 50px">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 col-md-8 col-md-offset-3 main">
+
+                  <div class="row placeholders">
+                    <div class="col-xs-6 col-sm-2 placeholder">
+                      <a href="http://www.baidu.com"><img src="/static/img/1.jpg"  class="img-responsive" style="width: 150px;height: 150px;" alt=""></a>
+                      <h4>OA</h4>
+                      <span class="text-muted">内部办公系统</span>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-2 placeholder">
+                      <a href="#"><img src="/static/img/2.jpg" class="img-responsive" style="width: 150px;height: 150px;" alt=""></a>
+                      <h4>CMDB</h4>
+                      <span class="text-muted">资产管理系统</span>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-2 placeholder">
+                     <a href="#"><img src="/static/img/8.jpg" class="img-responsive" style="width: 150px;height: 150px;" alt=""></a>
+                      <h4>ZABBIX</h4>
+                      <span class="text-muted">监控系统</span>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-2 placeholder">
+                      <a href="#"><img src="/static/img/3.jpg" class="img-responsive" style="width: 150px;height: 150px;" alt=""></a>
+                      <h4>SALTSTRACK</h4>
+                      <span class="text-muted">批量分发管理</span>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm-6 col-sm-offset-3 col-md-8 col-md-offset-3 main">
+                  <div class="row placeholders">
+                    <div class="col-xs-6 col-sm-2 placeholder">
+                      <a href="#"><img src="/static/img/4.jpg" class="img-responsive" style="width: 150px;height: 150px;" alt=""></a>
+                      <h4>Release</h4>
+                      <span class="text-muted">发布管理</span>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-2 placeholder">
+                       <a href="#"><img src="/static/img/5.jpg" class="img-responsive" style="width: 150px;height: 150px;" alt=""></a>
+                      <h4>EVENT</h4>
+                      <span class="text-muted">事件管理</span>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-2 placeholder">
+                       <a href="#"><img src="/static/img/6.jpg" class="img-responsive" style="width: 150px;height: 150px;" alt=""></a>
+                      <h4>PROBLEM</h4>
+                      <span class="text-muted">问题管理</span>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-2 placeholder">
+                     {% comment %} <a href=""><img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="200x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzM5REJBQyIvPjxnPjx0ZXh0IHg9Ijc1LjUiIHk9IjEwMCIgc3R5bGU9ImZpbGw6IzFFMjkyQztmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjIwMHgyMDA8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true"></a>{% endcomment %}
+                          <a href="#"><img src="/static/img/7.jpg" class="img-responsive" style="width: 150px;height: 150px;" alt=""></a>
+                      <h4>ADMIN</h4>
+                      <span class="text-muted">后台管理</span>
+                    </div>
+                  </div>
+            </div>
+
+
+      </div>
+    </div>
+
+    {# 页脚 #}
+     <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>
+                        Copyright&nbsp;©&nbsp;2012-2015&nbsp;&nbsp;www.maiziedu.com&nbsp;&nbsp;蜀ICP备13014270号-4 &nbsp;   Copyright&nbsp;©&nbsp;2012-2015&nbsp;&nbsp;www.maiziedu.com&nbsp;&nbsp;蜀ICP备13014270号-4
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+{% endblock %}
