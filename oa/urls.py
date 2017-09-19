@@ -15,9 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from oa.views import index
+from oa.views import oaIndex
 
 
 urlpatterns = [
-    url(r'^$', index.as_view()),
+    url(r'^$', oaIndex.as_view()),
 ]

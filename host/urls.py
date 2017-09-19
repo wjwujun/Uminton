@@ -19,4 +19,5 @@ from host.views import index
 urlpatterns = [
     url(r'^$', index.as_view()),
 
+
 ]

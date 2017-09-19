@@ -5,4 +5,14 @@ from django.views import View
 
 class index(View):
     def get(self,request):
-        return HttpResponse("hello!! this is host")
+        return render(request, 'host/index.html')
+
+
+
+
+
+
+
+
+
+
