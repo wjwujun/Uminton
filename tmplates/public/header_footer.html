@@ -20,15 +20,249 @@
     <link href="/static/index/css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
     <link href="/static/index/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
     <link href="/static/index/css/style.min.css?v=4.0.0" rel="stylesheet">
+    {% block css %}
+
+    {% endblock %}
 </head>
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
 
-{% block body %}
+<!--主体-->
+ <div id="wrapper">
+        <!--左侧导航-->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="nav-close"><i class="fa fa-times-circle"></i>
+            </div>
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+
+                     <!--个人头像-->
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <span><img alt="image" class="img-circle" src="/static/index/img/profile_small.jpg" /></span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                               <span class="block m-t-xs"><strong class="font-bold">Beaut-zihan</strong></span>
+                                <span class="text-muted text-xs block">超级管理员<b class="caret"></b></span>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a class="J_menuItem" href="form_avatar.html">修改头像</a>
+                                </li>
+                                <li><a class="J_menuItem" href="profile.html">个人资料</a>
+                                </li>
+                                <li><a class="J_menuItem" href="contacts.html">联系我们</a>
+                                </li>
+                                <li><a class="J_menuItem" href="mailbox.html">信箱</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li><a href="#">安全退出</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">H+
+                        </div>
+                    </li>
+
+                    <!--主页-->
+                    <li>
+                        <a href="/host"><i class="fa fa-columns"></i> 主页</a>
+                    </li>
+
+
+                     <!--作业管理-->
+                    <li class="{% ifequal active 'task' %} active {% endifequal %}" >
+                        <a href="#">
+                            <i class="fa fa fa-bar-chart-o"></i>
+                            <span class="nav-label">作业管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a   href="/host/excuteScript" >版本更新</a>
+                            </li>
+                            <li>
+                                <a  href="/host/sendFile">快速分发文件</a>
+                            </li>
+                            <li>
+                                <a  href="/host/executeSql">快速执行sql脚本</a>
+                            </li>
+                            <li>
+                                <a  href="/host/executeTask">常用作用执行</a>
+                            </li>
+                            <li>
+                                <a  href="/host/newTask">新建作业</a>
+                            </li>
+                            <li>
+                                <a  href="/host/crondTask">定时作业</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                      <!--业务管理-->
+                    <li class="{% ifequal active 'active' %} active {% endifequal %}">
+                        <a href="#">
+                            <i class="fa fa fa-bar-chart-o"></i>
+                            <span class="nav-label">业务管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a  href="/host/account">账户管理</a>
+                            </li>
+                            <li>
+                                <a  href="/host/script">脚本管理</a>
+                            </li>
+                            <li>
+                                <a  href="/host/DBaccount">DB账户管理</a>
+                            </li>
+                            <li>
+                                <a  href="/host/sql">SQL管理</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--执行历史-->
+                    <li class="{% ifequal active 'history' %} active {% endifequal %}">
+                        <a href="#">
+                            <i class="fa fa fa-bar-chart-o"></i>
+                            <span class="nav-label">执行历史</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a  href="/host/history">执行历史</a>
+                            </li>
+
+                        </ul>
+                    </li>
 
 
 
-{% endblock  %}
 
+
+                    <!--邮箱-->
+                    <li>
+                        <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">信箱 </span><span class="label label-warning pull-right">16</span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a class="J_menuItem" href="mailbox.html">收件箱</a>
+                            </li>
+                            <li><a class="J_menuItem" href="mail_detail.html">查看邮件</a>
+                            </li>
+                            <li><a class="J_menuItem" href="mail_compose.html">写信</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+        <!--右侧窗口-->
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+
+            <!--右侧顶部导航-->
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                        <ul class="nav navbar-top-links navbar-left">
+                            <li >
+                                <a href="/" data-index="0">首页</a>
+                            </li>
+                             <li >
+                                <a href="/oa" data-index="0">oa</a>
+                            </li>
+                             <li >
+                                <a href="/host"  data-index="0">host</a>
+                            </li>
+                             <li >
+                                <a href="/cmdb"  data-index="0">cmdb</a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                <i class="fa fa-envelope"></i> <span class="label label-warning">16</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-messages">
+                                <li class="m-t-xs">
+                                    <div class="dropdown-messages-box">
+
+                                        <div class="media-body">
+                                            <small class="pull-right">46小时前</small>
+                                            <strong>小四</strong> 这个在日本投降书上签字的军官，建国后一定是个不小的干部吧？
+                                            <br>
+                                            <small class="text-muted">3天前 2014.11.8</small>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                <i class="fa fa-bell"></i> <span class="label label-primary">8</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-alerts">
+                                <li>
+                                    <a href="#">
+                                        <div>
+                                            <i class="fa fa-envelope fa-fw"></i> 您有16条未读消息
+                                            <span class="pull-right text-muted small">4分钟前</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#">
+                                        <div>
+                                            <i class="fa fa-qq fa-fw"></i> 3条新回复
+                                            <span class="pull-right text-muted small">12分钟钱</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="text-center link-block">
+                                        <a class="J_menuItem" href="notifications.html">
+                                            <strong>查看所有 </strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                         {% comment %}     <li class="hidden-xs">
+                            <a href="index_v1.html" class="J_menuItem" data-index="0"><i class="fa fa-cart-arrow-down"></i> 购买</a>
+                        </li>
+                        <li class="dropdown hidden-xs">
+                            <a class="right-sidebar-toggle" aria-expanded="false">
+                                <i class="fa fa-tasks"></i> 主题
+                            </a>
+                        </li>{% endcomment %}
+                        <li class="dropdown hidden-xs"> <a href="login.html" class="right-sidebar-toggle" aria-expanded="false"><i class="fa fa fa-sign-out"></i> 退出</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+           <!--右侧主窗口-->
+            {% block main %}
+
+
+            {% endblock  %}
+
+
+
+
+            <!--右侧页脚-->
+            <div class="footer">
+                <div  style="margin-left: 600px"><a href="#" >Copyright © 2012-2017 Uminton. All Rights Reserved 有名堂互娱 版权所有</a></div>
+            </div>
+
+        </div>
+
+    </div>
 
 </body>
 
@@ -42,3 +276,8 @@
     <script src="/static/index/js/hplus.min.js?v=4.0.0"></script>
     <script src="/static/index/js/contabs.min.js" type="text/javascript"></script>
     <script src="/static/index/js/plugins/pace/pace.min.js"></script>
+
+
+{% block js %}
+
+{% endblock %}

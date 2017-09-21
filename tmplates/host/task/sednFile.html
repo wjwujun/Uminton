@@ -1,0 +1,99 @@
+
+
+
+
+
+
+
+
+
+{% extends 'public/header_footer.html' %}
+
+
+
+{% block title %}
+        <title>Uminton 管理系统</title>
+{% endblock %}
+
+
+{% block css %}
+        <link href="/static/index/css/host.css" rel="stylesheet">
+
+{% endblock %}
+
+
+
+{% block main %}
+
+
+    <!--右侧主窗口-->
+    <div class="row J_mainContent wrapper wrapper-content animated fadeInRight" id="content-main">
+             <div class="row">
+           <div class="col-sm-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>快速分发文件</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="graph_flot.html#">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-user">
+                                    <li><a href="graph_flot.html#">选项1</a>
+                                    </li>
+                                    <li><a href="graph_flot.html#">选项2</a>
+                                    </li>
+                                </ul>
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="echarts" id="echarts-line-chart"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+    </div>
+
+
+
+{% endblock  %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
