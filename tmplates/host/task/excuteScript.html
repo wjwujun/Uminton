@@ -41,7 +41,7 @@
 
     <div class="row">
        <div class="col-sm-12">
-           <div class="ibox float-e-margins">
+           <div class="ibox ">
                <div class="ibox-title"><h5>版本更新</h5></div>
                <div class="ibox-content" style="height: 1200px">
                    <!--可操作选项-->
@@ -55,12 +55,13 @@
                                     <table class="table table-bordered table-hover table-responsive">
                                          <tr >
                                                 <td>作业名称</td>
-                                                <td>最后修改时间</td>
                                                 <td>操作</td>
-                                            </tr>
+                                         </tr>
                                          <tr>
+                                             <form action="/host/excuteScript" method="post">
                                                 <td>
                                                     <select name="execute" id="" class="form-control">
+                                                        <option value="0">请选择要执行的操作</option>
                                                         <option value="1">更新</option>
                                                         <option value="2">偏移时间</option>
                                                         <option value="3">重启</option>
@@ -69,11 +70,12 @@
                                                     </select>
                                                 </td>
 
-                                                <th>2017-9-22 16:40:11</th>
+
                                                 <td>
-                                                     <button type="button" onclick="aa()"   class="btn btn-primary btn-sm" >执行</button>
+                                                     <button type="submit"   class="btn btn-primary btn-sm" >执行</button>
                                                 </td>
-                                            </tr>
+                                             </form>
+                                         </tr>
                                      </table>
                                 </div>
                             </div>
@@ -94,76 +96,24 @@
                         <div class="ibox box_style">
                                <div class="ibox-title">操作记录</div>
                                <div class="ibox-content">
-                                     <div class="timeline-item">
-                            <div class="row">
-                                <div class="col-xs-3 date">
-                                    <i class="fa fa-file-text"></i> 8:00
-                                    <br>
-                                    <small class="text-navy">3小时前</small>
-                                </div>
-                                <div class="col-xs-10 content">
-                                    <p class="m-b-xs"><strong>修复了0.5个bug</strong>
-                                    </p>
-                                    <p>重启服务</p>
-                                </div>
-                            </div>
-                        </div>
-                                    <div class="timeline-item">
-                                        <div class="row">
-                                            <div class="col-xs-3 date">
-                                                <i class="fa fa-file-text"></i> 7:00
-                                                <br>
-                                                <small class="text-navy">3小时前</small>
-                                            </div>
-                                            <div class="col-xs-10 content">
-                                                <p class="m-b-xs"><strong>修复了0.5个bug</strong>
-                                                </p>
-                                                <p>重启服务</p>
+                                   {% for history in re %}
+
+                                         <div class="timeline-item">
+                                            <div class="row">
+                                                <div class="col-xs-3 date">
+                                                    <i class="fa fa-file-text"></i>
+                                                    <br>
+                                                    <small class="text-navy">{{ history.name }}</small>
+                                                </div>
+                                                <div class="col-xs-10 content">
+                                                    <p class="m-b-xs" style="padding-top: 20px"><strong>{{ history.name }}进行了<b style="color: red">“{{ history.action }}”</b>操作</strong>
+                                                    </p>
+                                                    <p style="padding-top: 10px">{{ history.date|date:"Y-m-d H:i:s" }}</p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="timeline-item">
-                                        <div class="row">
-                                            <div class="col-xs-3 date">
-                                                <i class="fa fa-file-text"></i> 6:00
-                                                <br>
-                                                <small class="text-navy">3小时前</small>
-                                            </div>
-                                            <div class="col-xs-10 content">
-                                                <p class="m-b-xs"><strong>修复了0.5个bug</strong>
-                                                </p>
-                                                <p>重启服务</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="timeline-item">
-                                        <div class="row">
-                                            <div class="col-xs-3 date">
-                                                <i class="fa fa-file-text"></i> 6:00
-                                                <br>
-                                                <small class="text-navy">3小时前</small>
-                                            </div>
-                                            <div class="col-xs-10 content">
-                                                <p class="m-b-xs"><strong>修复了0.5个bug</strong>
-                                                </p>
-                                                <p>重启服务</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="timeline-item">
-                                        <div class="row">
-                                            <div class="col-xs-3 date">
-                                                <i class="fa fa-file-text"></i> 6:00
-                                                <br>
-                                                <small class="text-navy">3小时前</small>
-                                            </div>
-                                            <div class="col-xs-10 content">
-                                                <p class="m-b-xs"><strong>修复了0.5个bug</strong>
-                                                </p>
-                                                <p>重启服务</p>
-                                            </div>
-                                        </div>
-                                    </div>
+
+                                  {% endfor %}
                                </div>
                         </div>
 
@@ -200,7 +150,13 @@
     <script type="text/javascript">
 
     function aa() {
-      $('#myModal').modal('show');
+        $('form').submit();
+
+        $('#id_form').submit(function () {
+            $('#submit-id-submit').attr('disabled', true).val('发布中...');
+        })
+
+        window.location.href="/host/excuteScript"
     }
 
     </script>

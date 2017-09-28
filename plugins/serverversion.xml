@@ -1,0 +1,17 @@
+<!--
+     PlatID:设备ID，0=ios,1=android,20=pc
+Redirect：重定向地址或完整包下载地址
+Url:更新包下载地址
+Ver:下载包版本
+File:下载包文件
+Size:下载包大小
+-->
+<config>
+        <Dev PlatID="0" Name="ios" Redirect="http://www.google.com" Url="http://www.qq.com">
+        </Dev>
+        <Dev PlatID="1" Name="android" Redirect="http://dlied5.myapp.com/myapp/1105410169/freestyle/10025464_com.tencent.freestyle_h100_1.8.0.111.apk" Url="http://loginversion.uminton.com:6666/update/">
+           <version Ver="1.6.0.0.1" File="android_160001.zip" Size="848896" md5="" />
+           <version Ver="1.6.0.0.2" File="android_160002.zip" Size="848896" md5="" />
+           <version Ver="1.6.0.0.3" File="android_160003.zip" Size="848896" md5="" />
+        </Dev>
+</config>

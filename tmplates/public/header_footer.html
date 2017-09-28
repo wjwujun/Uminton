@@ -34,7 +34,6 @@
             </div>
             <div class="sidebar-collapse">
                 <ul class="nav" id="side-menu">
-
                      <!--个人头像-->
                     <li class="nav-header">
                         <div class="dropdown profile-element">
@@ -46,17 +45,12 @@
                                 </span>
                             </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                <li><a class="J_menuItem" href="form_avatar.html">修改头像</a>
-                                </li>
-                                <li><a class="J_menuItem" href="profile.html">个人资料</a>
-                                </li>
-                                <li><a class="J_menuItem" href="contacts.html">联系我们</a>
-                                </li>
-                                <li><a class="J_menuItem" href="mailbox.html">信箱</a>
-                                </li>
+                                <li><a class="J_menuItem" href="#">修改头像</a></li>
+                                <li><a class="J_menuItem" href="#">个人资料</a></li>
+                                <li><a class="J_menuItem" href="#">信箱</a></li>
+                                <li><a href="/" data-index="0">后台首页</a></li>
                                 <li class="divider"></li>
-                                <li><a href="#">安全退出</a>
-                                </li>
+                                <li><a href="#">安全退出</a></li>
                             </ul>
                         </div>
                         <div class="logo-element">H+
@@ -77,10 +71,10 @@
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
-                            <li>
+                            <li class="active">
                                 <a   href="/host/excuteScript" >版本更新</a>
                             </li>
-                            <li>
+                            <li >
                                 <a  href="/host/sendFile">快速分发文件</a>
                             </li>
                             <li>
@@ -161,12 +155,13 @@
         <div id="page-wrapper" class="gray-bg dashbard-1">
 
             <!--右侧顶部导航-->
-            <div class="row border-bottom">
+            {% comment %}<div class="row border-bottom">
                 <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
-                    <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-                        <ul class="nav navbar-top-links navbar-left">
+                    <div class="navbar-header">
+
+                        <ul class="nav navbar-top-links">
                             <li >
-                                <a href="/" data-index="0">首页</a>
+
                             </li>
                              <li >
                                 <a href="/oa" data-index="0">oa</a>
@@ -181,7 +176,7 @@
                         </ul>
                     </div>
 
-                    <ul class="nav navbar-top-links navbar-right">
+                 <ul class="nav navbar-top-links navbar-right">
                         <li class="dropdown">
                             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                                 <i class="fa fa-envelope"></i> <span class="label label-warning">16</span>
@@ -233,30 +228,20 @@
                                 </li>
                             </ul>
                         </li>
-                         {% comment %}     <li class="hidden-xs">
-                            <a href="index_v1.html" class="J_menuItem" data-index="0"><i class="fa fa-cart-arrow-down"></i> 购买</a>
-                        </li>
-                        <li class="dropdown hidden-xs">
-                            <a class="right-sidebar-toggle" aria-expanded="false">
-                                <i class="fa fa-tasks"></i> 主题
-                            </a>
-                        </li>{% endcomment %}
+
                         <li class="dropdown hidden-xs"> <a href="login.html" class="right-sidebar-toggle" aria-expanded="false"><i class="fa fa fa-sign-out"></i> 退出</a></li>
                     </ul>
                 </nav>
-            </div>
+            </div>{% endcomment %}
 
            <!--右侧主窗口-->
             {% block main %}
 
-
             {% endblock  %}
 
 
-
-
             <!--右侧页脚-->
-            <div class="footer">
+            <div class="footer" style="margin-top: 100px">
                 <div  style="margin-left: 600px"><a href="#" >Copyright © 2012-2017 Uminton. All Rights Reserved 有名堂互娱 版权所有</a></div>
             </div>
 
