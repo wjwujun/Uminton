@@ -19,9 +19,7 @@ class Row1(MiddlewareMixin):
             action = "热更"
         else:
             action = " "
-        print(content)
-        print(num)
-        print(action)
+
         if  action!= " ":
             models.log.objects.create(name="root", request=content,action=action)
 

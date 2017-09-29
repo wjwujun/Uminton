@@ -1,8 +1,23 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,HttpResponseRedirect
 from django.views import View
 import  paramiko
 from host import models
 # Create your views here.
+
+
+#登录页面
+class login(View):
+    def get(self,request):
+        return render(request, 'login.html')
+    def post(self,request):
+        username=request.POST.get('username','')
+        pwd=request.POST.get('pwd','')
+        if username=='admin' and pwd=='110120':
+            return render(request, 'host/index.html')
+        else:
+            print("你的账号或者密码有错误")
+
+
 
 #host主页
 class index(View):
@@ -19,9 +34,10 @@ class index(View):
 class excuteScript(View):
     def get(self,request):
         re = models.log.objects.all().order_by('-date')[:6]
+
         return render(request, 'host/task/excuteScript.html',{
             'active':'task',
-            'liActive':'active',
+            'liActive':'excute',
             're': re
         })
 
@@ -49,32 +65,8 @@ class excuteScript(View):
             print(5555)
         else:
             pass
-
         client.close()
-
-        re=models.log.objects.all().order_by('-date')[:6]
-        return render(request, 'host/task/excuteScript.html', {
-            'active': 'task',
-            'liActive': 'active',
-            're':re
-        })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        return HttpResponseRedirect('/host/excuteScript')
 
 
 
@@ -82,70 +74,52 @@ class excuteScript(View):
 class sendFile(View):
     def get(self,request):
         return render(request, 'host/task/sednFile.html',{
-            'active':'task'
+            'active':'task',
+            'liActive': 'sendFile',
         })
 
-#快速执行sql脚本
-class executeSql(View):
-    def get(self,request):
-        return render(request, 'host/task/executeSql.html',{
-            'active':'task'
-        })
-#常用作业执行
-class executeTask(View):
-    def get(self,request):
-        return render(request, 'host/task/executeTask.html',{
-            'active':'task'
-        })
-#新建作业
-class newTask(View):
-    def get(self,request):
-        return render(request, 'host/task/newTask.html',{
-            'active':'task'
-        })
-#定时作业
-class crondTask(View):
-    def get(self,request):
-        return render(request, 'host/task/crondTask.html',{
-            'active':'task'
-        })
 
 
 
 """
-业务管理
-
+服务器管理
 """
 
 
-#账户管理
-class account(View):
+#服务器列表
+class serverList(View):
     def get(self,request):
-        return render(request, 'host/admin/account.html',{
-            'active':'active'
+        return render(request, 'host/server/serverList.html', {
+            'active':'server',
+            'liActive': 'serverList',
         })
-#脚本管理
-class script(View):
+#添加服务器
+class serverAdd(View):
     def get(self,request):
-        return render(request, 'host/admin/script.html',{
-            'active':'active'
-        })
-
-
-#DB账户管理
-class DBaccount(View):
-    def get(self,request):
-        return render(request, 'host/admin/DBaccount.html',{
-            'active':'active'
+        return render(request, 'host/server/serverAdd.html', {
+            'active':'server',
+            'liActive': 'serverAdd',
         })
 
 
-
-#SQl管理
-class sql(View):
+#服务器分组
+class serverGroup(View):
     def get(self,request):
-        return render(request, 'host/admin/sql.html',{
-            'active':'active'
+        return render(request, 'host/server/serverGroup.html', {
+            'active':'server',
+            'liActive': 'serverGroup',
+        })
+
+
+""""
+日志管理
+"""
+
+#任务历史
+class log(View):
+    def get(self,request):
+        return render(request, 'host/log/log.html',{
+            'active':'log'
         })
 
 

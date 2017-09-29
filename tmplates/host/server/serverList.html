@@ -1,0 +1,314 @@
+
+
+
+
+
+
+
+
+
+{% extends 'public/header_footer.html' %}
+
+
+
+{% block title %}
+        <title>Uminton 管理系统</title>
+{% endblock %}
+
+
+{% block css %}
+        <link href="/static/index/css/host.css" rel="stylesheet">
+
+{% endblock %}
+
+
+
+{% block main %}
+
+
+    <!--右侧主窗口-->
+    <div class="row J_mainContent wrapper wrapper-content animated fadeInRight" id="content-main">
+             <div class="row">
+           <div class="col-sm-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>服务器管理</h5>
+                        </div>
+                        <div class="ibox-content" style="height: 1400px;">
+                           <!--列表-->
+                            <div class="row col-md-6">
+                                <div class="ibox box_style">
+                                        <div class="ibox-title"> 列表操作</div>
+                                        <div class="ibox-content">
+                                             <table class="table table-bordered table-hover table-responsive">
+                                       <tr>
+                                           <td colspan="4">
+                                               <button class="btn btn-warning" data-toggle="modal" data-target="#addServer">添加服务器</button>
+                                               <button class="btn btn-warning" data-toggle="modal" data-target="#addGroup">添加分组</button>
+                                           </td>
+                                       </tr>
+                                      <tr >
+                                        <th>IP地址</th>
+                                        <th>分组</th>
+                                        <th>版本</th>
+                                        <th>操作</th>
+                                      </tr>
+                                      <tr>
+
+                                          <td>
+                                              192.168.10.111
+                                          </td>
+                                          <td>
+                                              开发组
+                                          </td>
+                                          <td>
+                                             1.6版本
+                                          </td>
+                                          <td>
+                                              <button type="button"  onclick="aa()" class="btn btn-primary btn-sm " >删除</button>
+                                              <button type="button"  onclick="aa()" class="btn btn-primary btn-sm " >修改</button>
+                                          </td>
+                                      </tr>
+                                      <tr>
+
+                                      <td>
+                                          192.168.10.111
+                                      </td>
+                                      <td>
+                                          开发组
+                                      </td>
+                                      <td>
+                                         1.6版本
+                                      </td>
+                                      <td>
+                                          <button type="button"  onclick="aa()" class="btn btn-primary btn-sm " >添加</button>
+                                          <button type="button"  onclick="aa()" class="btn btn-primary btn-sm " >删除</button>
+                                          <button type="button"  onclick="aa()" class="btn btn-primary btn-sm " >修改</button>
+                                      </td>
+                                  </tr>
+
+                                      <tr>
+
+                                          <td>
+                                              192.168.10.111
+                                          </td>
+                                          <td>
+                                              开发组
+                                          </td>
+                                          <td>
+                                             1.6版本
+                                          </td>
+                                          <td>
+                                              <button type="button"  onclick="aa()" class="btn btn-primary btn-sm " >添加</button>
+                                              <button type="button"  onclick="aa()" class="btn btn-primary btn-sm " >删除</button>
+                                              <button type="button"  onclick="aa()" class="btn btn-primary btn-sm " >修改</button>
+                                          </td>
+                                   </tr>
+                                      <tr>
+                                          <td colspan="4">
+                                              <button class="btn ">上一页</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                              <a href="#"> <<<<<  </a>
+                                                &nbsp;&nbsp;
+                                                <button class="btn">1</button>
+                                                <button class="btn">2</button>
+                                                <button class="btn">3</button>
+                                                <button class="btn">4</button>
+                                                &nbsp;&nbsp;
+                                              <a href="#">
+                                                  >>>>
+                                              </a>
+
+                                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn  ">下一页</button>
+
+
+                                          </td>
+                                      </tr>
+                                  </table>
+                                        </div>
+                                </div>
+                            </div>
+                            <!--操作记录-->
+                            <div class="col-md-6">
+                                    <div class="ibox box_style">
+                                           <div class="ibox-title">操作记录</div>
+                                           <div class="ibox-content">
+                                                <div class="timeline-item">
+                                                        <div class="row">
+                                                            <div class="col-xs-3 date">
+                                                                <i class="fa fa-file-text"></i>
+                                                                <br>
+                                                                <small class="text-navy">haha</small>
+                                                            </div>
+                                                            <div class="col-xs-10 content">
+                                                                <p class="m-b-xs" style="padding-top: 20px"><strong>haha 进行了<b style="color: red">“添加服务器”</b>操作</strong>
+                                                                </p>
+                                                                <p style="padding-top: 10px">2017-9-30 16:24:11</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <div class="timeline-item">
+                                                        <div class="row">
+                                                            <div class="col-xs-3 date">
+                                                                <i class="fa fa-file-text"></i>
+                                                                <br>
+                                                                <small class="text-navy">haha</small>
+                                                            </div>
+                                                            <div class="col-xs-10 content">
+                                                                <p class="m-b-xs" style="padding-top: 20px"><strong>haha 进行了<b style="color: red">“添加服务器”</b>操作</strong>
+                                                                </p>
+                                                                <p style="padding-top: 10px">2017-9-30 16:24:11</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <div class="timeline-item">
+                                                        <div class="row">
+                                                            <div class="col-xs-3 date">
+                                                                <i class="fa fa-file-text"></i>
+                                                                <br>
+                                                                <small class="text-navy">haha</small>
+                                                            </div>
+                                                            <div class="col-xs-10 content">
+                                                                <p class="m-b-xs" style="padding-top: 20px"><strong>haha 进行了<b style="color: red">“添加服务器”</b>操作</strong>
+                                                                </p>
+                                                                <p style="padding-top: 10px">2017-9-30 16:24:11</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <div class="timeline-item">
+                                                        <div class="row">
+                                                            <div class="col-xs-3 date">
+                                                                <i class="fa fa-file-text"></i>
+                                                                <br>
+                                                                <small class="text-navy">haha</small>
+                                                            </div>
+                                                            <div class="col-xs-10 content">
+                                                                <p class="m-b-xs" style="padding-top: 20px"><strong>haha 进行了<b style="color: red">“添加服务器”</b>操作</strong>
+                                                                </p>
+                                                                <p style="padding-top: 10px">2017-9-30 16:24:11</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <div class="timeline-item">
+                                                        <div class="row">
+                                                            <div class="col-xs-3 date">
+                                                                <i class="fa fa-file-text"></i>
+                                                                <br>
+                                                                <small class="text-navy">haha</small>
+                                                            </div>
+                                                            <div class="col-xs-10 content">
+                                                                <p class="m-b-xs" style="padding-top: 20px"><strong>haha 进行了<b style="color: red">“添加服务器”</b>操作</strong>
+                                                                </p>
+                                                                <p style="padding-top: 10px">2017-9-30 16:24:11</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                           </div>
+                                    </div>
+                               </div>
+
+                        </div>
+                    </div>
+                </div>
+           </div>
+
+            <!--添加服务器-->
+           <div class="modal fade" id="addServer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                 <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="myModalLabel">添加服务器</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="#">
+                                                    <div class="form-group">
+                                                        <label for="addname">IP地址</label>
+                                                        <input type="text" id="addname" class="form-control" placeholder="IP地址">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="addyonghuzu">所属分组</label>
+                                                        <select id="addyonghuzu" class="form-control">
+                                                            <option>运维组</option>
+                                                            <option>开发组</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="addyonghuzu">版本</label>
+                                                        <select id="addyonghuzu" class="form-control">
+                                                            <option>1.6版本</option>
+                                                            <option>1.7版本</option>
+                                                            <option>1.8版本</option>
+                                                        </select>
+                                                    </div>
+
+
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                                <button type="button" class="btn btn-primary">提交</button>
+                                            </div>
+                                        </div>
+                                    </div>
+           </div>
+            <!--添加分组-->
+           <div class="modal fade" id="addGroup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">添加分组</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="#">
+                            <div class="form-group">
+                                <label for="addname">分组名</label>
+                                <input type="text" id="addname" class="form-control" placeholder="分组名">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary">提交</button>
+                    </div>
+                </div>
+            </div>
+           </div>
+
+    </div>
+
+
+{% endblock  %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

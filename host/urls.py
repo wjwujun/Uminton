@@ -15,23 +15,21 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from host.views import index,excuteScript,sendFile,executeSql,executeTask,newTask,crondTask,account,script,DBaccount,sql,history
+from host.views import index,excuteScript,sendFile,serverList,serverAdd,serverGroup,log,history
 urlpatterns = [
     url(r'^$', index.as_view()),    #主页
 
     url(r'^excuteScript', excuteScript.as_view()),   #快速脚本执行
     url(r'^sendFile', sendFile.as_view()),           #快速分发文件
-    url(r'^executeSql', executeSql.as_view()),      #快速执行sql脚本
-    url(r'^executeTask', executeTask.as_view()),     #常用作业执行
-    url(r'^newTask', newTask.as_view()),            #新建作业
-    url(r'^crondTask', crondTask.as_view()),        #定时作业
 
 
 
-    url(r'^account', account.as_view()),            #账户管理
-    url(r'^script', script.as_view()),              #脚本管理
-    url(r'^DBaccount', DBaccount.as_view()),        #DB账户管理
-    url(r'^sql', sql.as_view()),                    #SQl管理
+    url(r'^serverList', serverList.as_view()),            #服务器列表
+    url(r'^serverAdd', serverAdd.as_view()),              #添加服务器
+    url(r'^serverGroup', serverGroup.as_view()),         #服务器分组
+
+
+    url(r'^log', log.as_view()),            #任务历史
 
     url(r'^history', history.as_view()),            #任务历史
 

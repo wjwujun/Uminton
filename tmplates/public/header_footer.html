@@ -50,11 +50,11 @@
                                 <li><a class="J_menuItem" href="#">信箱</a></li>
                                 <li><a href="/" data-index="0">后台首页</a></li>
                                 <li class="divider"></li>
-                                <li><a href="#">安全退出</a></li>
+                                <li><a href="/">安全退出</a></li>
                             </ul>
                         </div>
-                        <div class="logo-element">H+
-                        </div>
+
+
                     </li>
 
                     <!--主页-->
@@ -71,50 +71,54 @@
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
-                            <li class="active">
+                            <li  {% ifequal liActive 'excute' %}  class="active" {% endifequal %}>
                                 <a   href="/host/excuteScript" >版本更新</a>
                             </li>
-                            <li >
+                            <li  {% ifequal liActive 'sendFile' %}  class="active" {% endifequal %}>
+
                                 <a  href="/host/sendFile">快速分发文件</a>
                             </li>
-                            <li>
-                                <a  href="/host/executeSql">快速执行sql脚本</a>
-                            </li>
-                            <li>
-                                <a  href="/host/executeTask">常用作用执行</a>
-                            </li>
-                            <li>
-                                <a  href="/host/newTask">新建作业</a>
-                            </li>
-                            <li>
-                                <a  href="/host/crondTask">定时作业</a>
-                            </li>
+
 
                         </ul>
                     </li>
 
-                      <!--业务管理-->
-                    <li class="{% ifequal active 'active' %} active {% endifequal %}">
+                      <!--服务器管理-->
+                    <li class="{% ifequal active 'server' %} active {% endifequal %}">
                         <a href="#">
                             <i class="fa fa fa-bar-chart-o"></i>
-                            <span class="nav-label">业务管理</span>
+                            <span class="nav-label">服务器管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li  {% ifequal liActive 'serverList' %}  class="active" {% endifequal %}>
+                                <a  href="/host/serverList">服务器列表</a>
+                            </li>
+{#                            <li  {% ifequal liActive 'serverAdd' %}  class="active" {% endifequal %}>#}
+{#                                <a  href="/host/serverAdd">添加服务器</a>#}
+{#                            </li>#}
+{#                            <li  {% ifequal liActive 'serverGroup' %}  class="active" {% endifequal %}>#}
+{#                                <a  href="/host/serverGroup">服务器分组</a>#}
+{#                            </li>#}
+                        </ul>
+                    </li>
+
+                      <!--日志-->
+                    <li class="{% ifequal active 'log' %} active {% endifequal %}">
+                        <a href="#">
+                            <i class="fa fa fa-bar-chart-o"></i>
+                            <span class="nav-label">日志管理</span>
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a  href="/host/account">账户管理</a>
+                                <a  href="/host/log">日志列表</a>
                             </li>
-                            <li>
-                                <a  href="/host/script">脚本管理</a>
-                            </li>
-                            <li>
-                                <a  href="/host/DBaccount">DB账户管理</a>
-                            </li>
-                            <li>
-                                <a  href="/host/sql">SQL管理</a>
-                            </li>
+
                         </ul>
                     </li>
+
+
 
                     <!--执行历史-->
                     <li class="{% ifequal active 'history' %} active {% endifequal %}">
@@ -124,27 +128,10 @@
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
-                            <li>
+                            <li class="{% ifequal active 'history' %} active {% endifequal %}">
                                 <a  href="/host/history">执行历史</a>
                             </li>
 
-                        </ul>
-                    </li>
-
-
-
-
-
-                    <!--邮箱-->
-                    <li>
-                        <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">信箱 </span><span class="label label-warning pull-right">16</span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="mailbox.html">收件箱</a>
-                            </li>
-                            <li><a class="J_menuItem" href="mail_detail.html">查看邮件</a>
-                            </li>
-                            <li><a class="J_menuItem" href="mail_compose.html">写信</a>
-                            </li>
                         </ul>
                     </li>
 
