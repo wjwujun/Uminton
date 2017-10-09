@@ -1,7 +1,8 @@
 from django.shortcuts import render,HttpResponse,HttpResponseRedirect
 from django.views import View
-import  paramiko
+import  paramiko,json
 from host import models
+from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 # Create your views here.
 
 
@@ -17,14 +18,10 @@ class login(View):
         else:
             print("你的账号或者密码有错误")
 
-
-
 #host主页
 class index(View):
     def get(self,request):
         return render(request, 'host/index.html')
-
-
 
 """"
 作业管理
@@ -33,12 +30,20 @@ class index(View):
 #脚本执行(版本更新)
 class excuteScript(View):
     def get(self,request):
-        re = models.log.objects.all().order_by('-date')[:6]
+        re = models.log.objects.filter().order_by('-date')[:6]
+        version=request.GET.get('version',1)
+        print(version)
+        host=models.host.objects.filter(version=version)
+        for i in host:
+            print(i.ip)
+            print(i.version)
+            print(i.group)
 
         return render(request, 'host/task/excuteScript.html',{
             'active':'task',
             'liActive':'excute',
-            're': re
+            're': re,
+            'host':host
         })
 
     def post(self,request):
@@ -80,7 +85,6 @@ class sendFile(View):
 
 
 
-
 """
 服务器管理
 """
@@ -89,18 +93,69 @@ class sendFile(View):
 #服务器列表
 class serverList(View):
     def get(self,request):
+
+        server=models.host.objects.all()
+        sort = request.GET.get('sort', "")
+
+        # if sort:
+        #     if sort == "version":
+        #         server = server.order_by("-version")
+        #     elif sort == "group":
+        #         server = server.order_by("-group")
+
         return render(request, 'host/server/serverList.html', {
             'active':'server',
             'liActive': 'serverList',
-        })
-#添加服务器
-class serverAdd(View):
-    def get(self,request):
-        return render(request, 'host/server/serverAdd.html', {
-            'active':'server',
-            'liActive': 'serverAdd',
+            'all_server':server
         })
 
+#添加服务器
+class serverAdd(View):
+    def post(self,request):
+        ip=request.POST.get('ip','')
+        group=request.POST.get('group','')
+        version=request.POST.get('version','')
+        models.host.objects.create(ip=ip,group=group,version=version)
+
+        return HttpResponseRedirect('/host/serverList')
+
+#获取单台服务器信息
+class getServer(View):
+    def get(self,request):
+        id = request.GET.get('id','')
+        host = models.host.objects.filter(id=id)
+
+        if len(host)==1:
+            list = {}
+            list['ip'] = host[0].ip
+            list['version'] = host[0].version
+            list['group'] = host[0].group
+            list['id'] = host[0].id
+            return HttpResponse(json.dumps(list))
+        else:
+            list={}
+            return HttpResponse(list)
+
+#修改单台服务器信息
+class editServer(View):
+    def post(self,request):
+        id = request.POST.get('id', '')
+        print(id)
+        ip = request.POST.get('ip', '')
+        group = request.POST.get('group', '')
+        version = request.POST.get('version', '')
+        re=models.host.objects.filter(id=id).update(ip=ip,group=group,version=version)
+        return HttpResponseRedirect('/host/serverList')
+
+#删除单台服务器信息
+class delServer(View):
+    def get(self,request):
+        id = request.GET.get('id','')
+        re = models.host.objects.filter(id=id).delete()
+        if re:
+            return HttpResponse(1)
+        else:
+            return HttpResponse(2)
 
 #服务器分组
 class serverGroup(View):
@@ -109,6 +164,7 @@ class serverGroup(View):
             'active':'server',
             'liActive': 'serverGroup',
         })
+
 
 
 """"

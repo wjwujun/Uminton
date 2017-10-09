@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from host.views import index,excuteScript,sendFile,serverList,serverAdd,serverGroup,log,history
+from host.views import index,excuteScript,sendFile,serverList,serverAdd,getServer,editServer,delServer,serverGroup,log,history
 urlpatterns = [
     url(r'^$', index.as_view()),    #主页
 
@@ -26,7 +26,10 @@ urlpatterns = [
 
     url(r'^serverList', serverList.as_view()),            #服务器列表
     url(r'^serverAdd', serverAdd.as_view()),              #添加服务器
-    url(r'^serverGroup', serverGroup.as_view()),         #服务器分组
+    url(r'^getServer', getServer.as_view()),              #获取单台
+    url(r'^editServer', editServer.as_view()),            #修改
+    url(r'^delServer', delServer.as_view()),              #删除
+    url(r'^serverGroup', serverGroup.as_view()),          #服务器分组
 
 
     url(r'^log', log.as_view()),            #任务历史

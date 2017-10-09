@@ -8,6 +8,27 @@ class log(models.Model):
     request=models.FileField(max_length=50,null=True,verbose_name="请求url")
     date=models.DateTimeField(auto_now_add=True)
 
+class host(models.Model):
+    id=models.AutoField(primary_key=True)
+    ip=models.GenericIPAddressField(u'ip',blank=True,null=True)
+    version_choice=(
+        (0,'1.6版本'),
+        (1,'1.7版本'),
+        (2,'1.8版本')
+    )
+    version=models.SmallIntegerField(u'版本号',choices=version_choice,default=0)
+
+    group_choice = (
+        (0, '运维组'),
+        (1, '开发组'),
+        (2, '美术组')
+    )
+    group=models.SmallIntegerField(u'分组',choices=group_choice,default=0)
+
+
+
+
+
 
 
 

@@ -28,13 +28,13 @@
 
     <!--右侧主窗口-->
     <div class="row J_mainContent wrapper wrapper-content animated fadeInRight" id="content-main">
-             <div class="row">
-           <div class="col-sm-12">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
+         <div class="row">
+              <div class="col-sm-12">
+                 <div class="ibox float-e-margins">
+                    <div class="ibox-title">
                             <h5>服务器管理</h5>
                         </div>
-                        <div class="ibox-content" style="height: 1400px;">
+                    <div class="ibox-content" style="height: 1400px;">
                            <!--列表-->
                             <div class="row col-md-6">
                                 <div class="ibox box_style">
@@ -44,7 +44,8 @@
                                        <tr>
                                            <td colspan="4">
                                                <button class="btn btn-warning" data-toggle="modal" data-target="#addServer">添加服务器</button>
-                                               <button class="btn btn-warning" data-toggle="modal" data-target="#addGroup">添加分组</button>
+{#                                               <button class="btn btn-warning" ><a href="/host/serverList?sort=verison">版本</a></button>#}
+{#                                               <button class="btn btn-warning" ><a href="/host/serverList?sort=group">分组</a></button>#}
                                            </td>
                                        </tr>
                                       <tr >
@@ -53,74 +54,31 @@
                                         <th>版本</th>
                                         <th>操作</th>
                                       </tr>
-                                      <tr>
+                                        {% for host in all_server %}
+                                         <tr>
 
-                                          <td>
-                                              192.168.10.111
-                                          </td>
-                                          <td>
-                                              开发组
-                                          </td>
-                                          <td>
-                                             1.6版本
-                                          </td>
-                                          <td>
-                                              <button type="button"  onclick="aa()" class="btn btn-primary btn-sm " >删除</button>
-                                              <button type="button"  onclick="aa()" class="btn btn-primary btn-sm " >修改</button>
-                                          </td>
-                                      </tr>
-                                      <tr>
+                                              <td>
+                                                  {{ host.ip }}
+                                              </td>
+                                              <td>
+                                                  {{ host.get_group_display }}
+                                              </td>
+                                              <td>
+                                                 {{ host.get_version_display }}
+                                              </td>
+                                              <td>
+                                                  <button type="button"  onclick="del({{ host.id }})" class="btn btn-warning btn-sm " >删除</button>
+                                                  <button type="button"  onclick="edit({{ host.id }})" class="btn btn-warning btn-sm " >修改</button>
+{#                                                  <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#addGroup">添加分组</button>#}
+                                              </td>
+                                         </tr>
+                                      {% endfor %}
 
-                                      <td>
-                                          192.168.10.111
-                                      </td>
-                                      <td>
-                                          开发组
-                                      </td>
-                                      <td>
-                                         1.6版本
-                                      </td>
-                                      <td>
-                                          <button type="button"  onclick="aa()" class="btn btn-primary btn-sm " >添加</button>
-                                          <button type="button"  onclick="aa()" class="btn btn-primary btn-sm " >删除</button>
-                                          <button type="button"  onclick="aa()" class="btn btn-primary btn-sm " >修改</button>
-                                      </td>
-                                  </tr>
-
-                                      <tr>
-
-                                          <td>
-                                              192.168.10.111
-                                          </td>
-                                          <td>
-                                              开发组
-                                          </td>
-                                          <td>
-                                             1.6版本
-                                          </td>
-                                          <td>
-                                              <button type="button"  onclick="aa()" class="btn btn-primary btn-sm " >添加</button>
-                                              <button type="button"  onclick="aa()" class="btn btn-primary btn-sm " >删除</button>
-                                              <button type="button"  onclick="aa()" class="btn btn-primary btn-sm " >修改</button>
-                                          </td>
-                                   </tr>
                                       <tr>
                                           <td colspan="4">
-                                              <button class="btn ">上一页</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                              <a href="#"> <<<<<  </a>
-                                                &nbsp;&nbsp;
-                                                <button class="btn">1</button>
-                                                <button class="btn">2</button>
-                                                <button class="btn">3</button>
-                                                <button class="btn">4</button>
-                                                &nbsp;&nbsp;
-                                              <a href="#">
-                                                  >>>>
-                                              </a>
+                                                <ul >
 
-                                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn  ">下一页</button>
-
-
+                                                </ul>
                                           </td>
                                       </tr>
                                   </table>
@@ -205,52 +163,102 @@
                                            </div>
                                     </div>
                                </div>
+                        </div>
+                 </div>
+              </div>
+         </div>
+
+            <!--添加服务器-->
+           <div class="modal fade" id="addServer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                 <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">添加服务器</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/host/serverAdd" method="post">
+                                <div class="form-group">
+                                    <label for="addname">IP地址</label>
+                                    <input type="text"  name="ip" class="form-control" placeholder="IP地址">
+                                </div>
+                                <div class="form-group">
+                                    <label for="addyonghuzu">所属分组</label>
+                                    <select id="addyonghuzu" name="group" class="form-control">
+                                        <option value="0">运维组</option>
+                                        <option value="1">开发组</option>
+                                        <option value="2">美术组</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="addyonghuzu">版本</label>
+                                    <select id="addyonghuzu" name="version" class="form-control">
+                                        <option value="0">1.6版本</option>
+                                        <option value="1">1.7版本</option>
+                                        <option value="2">1.8版本</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                        <button type="submit" class="btn btn-primary">提交</button>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
 
                         </div>
                     </div>
                 </div>
            </div>
 
-            <!--添加服务器-->
-           <div class="modal fade" id="addServer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+             <!--修改服务器-->
+           <div class="modal fade" id="editServer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                  <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title" id="myModalLabel">添加服务器</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="#">
-                                                    <div class="form-group">
-                                                        <label for="addname">IP地址</label>
-                                                        <input type="text" id="addname" class="form-control" placeholder="IP地址">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="addyonghuzu">所属分组</label>
-                                                        <select id="addyonghuzu" class="form-control">
-                                                            <option>运维组</option>
-                                                            <option>开发组</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="addyonghuzu">版本</label>
-                                                        <select id="addyonghuzu" class="form-control">
-                                                            <option>1.6版本</option>
-                                                            <option>1.7版本</option>
-                                                            <option>1.8版本</option>
-                                                        </select>
-                                                    </div>
-
-
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                                <button type="button" class="btn btn-primary">提交</button>
-                                            </div>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">修改服务器</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/host/editServer" method="post">
+                                        <div class="form-group">
+                                            <label for="addname">IP地址</label>
+                                            <input type="text" id="serverIp" name="ip" value="" class="form-control" placeholder="IP地址">
                                         </div>
-                                    </div>
+                                        <div class="form-group">
+                                            <label for="editGroup">所属分组</label>
+                                            <select id="editGroup" name="group" class="form-control">
+                                                <option value="0">运维组</option>
+                                                <option value="1">开发组</option>
+                                                <option value="2">美术组</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="editVersion">版本</label>
+                                            <select id="editVersion" name="version" class="form-control">
+                                                <option value="0">1.6版本</option>
+                                                <option value="1">1.7版本</option>
+                                                <option value="2">1.8版本</option>
+                                            </select>
+                                        </div>
+                                         <input type="hidden" id="serverId"  name="id" value="">
+                                <div class="form-group">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                        <button type="submit" class="btn btn-primary">提交</button>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+
+                        </div>
+                    </div>
+                </div>
            </div>
+
+
             <!--添加分组-->
            <div class="modal fade" id="addGroup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
@@ -275,6 +283,7 @@
             </div>
            </div>
 
+
     </div>
 
 
@@ -282,8 +291,55 @@
 
 
 
+{% block js %}
+<script type="text/javascript">
 
 
+    //修改
+    function edit(id) {
+          $.ajax({
+                url:'/host/getServer?id='+id,
+                type:'GET',
+                success:function(data){
+                    if(data.length==0){
+                     alert("没有对应数据，请刷新！")
+                    }else{
+                        data=JSON.parse(data);
+                        $("#serverIp").val(data.ip);
+                        $("#editGroup").val(data.group);
+                        $("#editVersion").val(data.version);
+                        $("#serverId").val(data.id);
+                        $("#editServer").modal("show")
+                    }
+
+                }
+          })
+    }
+
+    //删除
+    function del(id) {
+         $.ajax({
+                url:'/host/delServer?id='+id,
+                type:'GET',
+                success:function(data){
+                    if(data==1){
+                         alert("删除成功")
+                        window.location.reload()
+                    }else if(data==2){
+                        alert("删除失败");
+                        window.location.reload()
+                    }
+
+                }
+         })
+    }
+
+
+
+
+
+</script>
+{% endblock %}
 
 
 
