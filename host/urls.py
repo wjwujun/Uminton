@@ -32,8 +32,7 @@ urlpatterns = [
     url(r'^serverGroup', serverGroup.as_view()),          #服务器分组
 
 
-    url(r'^log', log.as_view()),            #任务历史
-
+    url(r'^log', log.as_view()),                    #任务历史
     url(r'^history', history.as_view()),            #任务历史
 
 

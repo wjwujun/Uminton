@@ -32,12 +32,7 @@ class excuteScript(View):
     def get(self,request):
         re = models.log.objects.filter().order_by('-date')[:6]
         version=request.GET.get('version',1)
-        print(version)
         host=models.host.objects.filter(version=version)
-        for i in host:
-            print(i.ip)
-            print(i.version)
-            print(i.group)
 
         return render(request, 'host/task/excuteScript.html',{
             'active':'task',
@@ -47,7 +42,15 @@ class excuteScript(View):
         })
 
     def post(self,request):
-        execute = request.POST.get('execute', 0)
+        execute = request.POST.get('execute')
+        ip=request.POST.get('ip')
+        version=request.POST.get('version')
+
+        print(execute)
+        print(ip)
+        print(version)
+
+
         #远程ssh链接
         client = paramiko.SSHClient()
         client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -56,7 +59,7 @@ class excuteScript(View):
         #类型转换
         num=int(execute)
         md5="wrf5456szgs1"
-        #执行更新操作
+        #执行操作
         if num==1:
             cmd="cd /application/tools && python insert.py " + md5
             stdin, stdout, stderr = client.exec_command(cmd)
