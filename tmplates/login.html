@@ -40,11 +40,11 @@
                 </div>
             </div>
             <div class="col-sm-5">
-                <form method="post" action="/">
+                <form method="post" action="/host/check">
                     <h4 class="no-margins">登录：</h4>
                     <p class="m-t-md">登录Uminton</p>
-                    <input type="text" class="form-control uname" name="username" placeholder="用户名" />
-                    <input type="password" class="form-control pword m-b" name="pwd" placeholder="密码" />
+                    <input type="text" class="form-control uname" id="name"  name="username" placeholder="用户名" />
+                    <input type="password" class="form-control pword m-b" id="pwd" name="pwd" placeholder="密码" />
                     <a href="">忘记密码了？</a>
                     <button class="btn btn-success btn-block">登录</button>
                 </form>
@@ -59,3 +59,26 @@
 </body>
 
 </html>
+<script src="/static/js/jquery.min.js"> </script>
+<script type="application/javascript">
+    $("#name").blur(function () {
+         var name={'name':$("#name").val()};
+         $.ajax({
+                url:'/host/user',
+                type:'POST',
+                data:name,
+                dataType: 'json',
+                success:function(data){
+                    if(data==1){
+                        alert('不存在这个账号')
+                    }
+                }
+          })
+
+    })
+
+
+
+</script>
+
+

@@ -51,8 +51,26 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="ibox-content">
-                            <div class="echarts" id="echarts-line-chart"></div>
+                        <div class="ibox-content" style="height: 1000px">
+
+                               {% for history in re %}
+
+                                     <div class="timeline-item">
+                                        <div class="row">
+                                            <div class="col-xs-3 date">
+                                                <i class="fa fa-file-text"></i>
+                                                <br>
+                                                <small class="text-navy">{{ history.name }}</small>
+                                            </div>
+                                            <div class="col-xs-10 content">
+                                                <p class="m-b-xs" style="padding-top: 20px"><strong>{{ history.name }}进行了<b style="color: red">“{{ history.action }}”</b>操作</strong>
+                                                </p>
+                                                <p style="padding-top: 10px">{{ history.date|date:"Y-m-d H:i:s" }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                              {% endfor %}
+
                         </div>
                     </div>
                 </div>

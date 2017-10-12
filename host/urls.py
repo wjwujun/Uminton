@@ -15,12 +15,17 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from host.views import index,excuteScript,sendFile,serverList,serverAdd,getServer,editServer,delServer,serverGroup,log,history
+from host.views import index,excuteScript,change,sendFile,serverList,serverAdd,getServer,editServer,delServer,serverGroup,log,history,check,user
 urlpatterns = [
     url(r'^$', index.as_view()),    #主页
 
-    url(r'^excuteScript', excuteScript.as_view()),   #快速脚本执行
-    url(r'^sendFile', sendFile.as_view()),           #快速分发文件
+    url(r'^user', user.as_view()),    #检验账号
+    url(r'^check', check.as_view()),    #检验账号密码
+
+    url(r'^excuteScript', excuteScript.as_view()),   #过去页面
+    url(r'^change', change.as_view()),               #执行脚本
+
+   #url(r'^sendFile', sendFile.as_view()),           #快速分发文件
 
 
 

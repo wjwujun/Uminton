@@ -52,12 +52,66 @@
                             </div>
                         </div>
                         <div class="ibox-content">
-                            <div class="echarts" id="echarts-line-chart"></div>
+                            <table class="table table-bordered table-hover table-responsive">
+                                  <tr>
+                                       <td colspan="4">
+                                           <button class="btn btn-warning" data-toggle="modal" data-target="#addServer">日志列表</button>
+                                       </td>
+                                   </tr>
+                                  <tr >
+                                    <th>IP地址</th>
+                                    <th>分组</th>
+                                    <th>日志名称</th>
+                                    <th>操作</th>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                       192.168.453.44
+                                      </td>
+                                      <td>
+                                         relaygateway_1.warn.log.2017-08-09-00
+                                      </td>
+                                      <td>
+                                        relaygateway_1.warn.log.2017-08-09-00
+                                      </td>
+                                      <td>
+                                          <button type="button"  onclick="del({{ host.id }})" class="btn btn-warning btn-sm " ><a href="">下载</a></button>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                         192.168.453.44
+                                      </td>
+                                      <td>
+                                         relaygateway_1.warn.log.2017-08-09-00
+                                      </td>
+                                      <td>
+                                        relaygateway_1.warn.log.2017-08-09-00
+                                      </td>
+                                      <td>
+                                          <button type="button"  onclick="del({{ host.id }})" class="btn btn-warning btn-sm " ><a href="">下载</a></button>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                         192.168.453.44
+                                      </td>
+                                      <td>
+                                         relaygateway_1.warn.log.2017-08-09-00
+                                      </td>
+                                      <td>
+                                        relaygateway_1.warn.log.2017-08-09-00
+                                      </td>
+                                      <td>
+                                          <button type="button"  onclick="del({{ host.id }})" class="btn btn-warning btn-sm " >
+                                              <a href="">下载</a></button>
+                                      </td>
+                                  </tr>
+                            </table>
                         </div>
                     </div>
                 </div>
-
-            </div>
+           </div>
 
     </div>
 

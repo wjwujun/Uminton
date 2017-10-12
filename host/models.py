@@ -25,6 +25,14 @@ class host(models.Model):
     )
     group=models.SmallIntegerField(u'分组',choices=group_choice,default=0)
 
+class user(models.Model):
+    id=models.AutoField(primary_key=True)
+    name=models.FileField('登录名',max_length=50)
+    pwd=models.FileField('密码',max_length=100)
+
+
+
+
 
 
 
